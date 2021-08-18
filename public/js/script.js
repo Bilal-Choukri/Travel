@@ -1,11 +1,3 @@
-let loadFile = function(event)
-{
-    let image = document.getElementById('image');
-
-    image.src = URL.createObjectURL(event.target.files[0]);
-}
-
-
 
 // Rubberband Input
 const rubberIpts = document.querySelectorAll(".rubber-ipt");
