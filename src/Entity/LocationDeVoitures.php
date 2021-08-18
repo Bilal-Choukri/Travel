@@ -18,25 +18,56 @@ class LocationDeVoitures
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="float")
      */
-    private $PriseEnCharge;
+    private $prix;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $Restitution;
+    private $modele;
 
-   
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="string", length=255)
      */
-    private $Date;
+    private $prixencharge;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $restitution;
 
     /**
      * @ORM\Column(type="date")
      */
-    private $DateRetour;
+    private $date;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $image;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $dateRetour;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $image1;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $image2;
+
+    public $imageModif;
+
+    public $imageModif1;
+
+    public $imageModif2;
+
 
 
     public function getId(): ?int
@@ -44,27 +75,50 @@ class LocationDeVoitures
         return $this->id;
     }
 
-
-    public function getPriseEnCharge(): ?string
+    public function getPrix(): ?float
     {
-        return $this->PriseEnCharge;
+        return $this->prix;
     }
 
-    public function setPriseEnCharge(string $PriseEnCharge): self
+    public function setPrix(float $prix): self
     {
-        $this->PriseEnCharge = $PriseEnCharge;
+        $this->prix = $prix;
+
+        return $this;
+    }
+
+    public function getModele(): ?string
+    {
+        return $this->modele;
+    }
+
+    public function setModele(string $modele): self
+    {
+        $this->modele = $modele;
+
+        return $this;
+    }
+
+    public function getPrixencharge(): ?string
+    {
+        return $this->prixencharge;
+    }
+
+    public function setPrixencharge(string $prixencharge): self
+    {
+        $this->prixencharge = $prixencharge;
 
         return $this;
     }
 
     public function getRestitution(): ?string
     {
-        return $this->Restitution;
+        return $this->restitution;
     }
 
-    public function setRestitution(string $Restitution): self
+    public function setRestitution(string $restitution): self
     {
-        $this->Restitution = $Restitution;
+        $this->restitution = $restitution;
 
         return $this;
     }
@@ -72,26 +126,61 @@ class LocationDeVoitures
 
     public function getDate(): ?\DateTimeInterface
     {
-        return $this->Date;
+        return $this->date;
     }
 
-    public function setDate(\DateTimeInterface $Date): self
+    public function setDate(\DateTimeInterface $date): self
     {
-        $this->Date = $Date;
+        $this->date = $date;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(string $image): self
+    {
+        $this->image = $image;
 
         return $this;
     }
 
     public function getDateRetour(): ?\DateTimeInterface
     {
-        return $this->DateRetour;
+        return $this->dateRetour;
     }
 
-    public function setDateRetour(\DateTimeInterface $DateRetour): self
+    public function setDateRetour(\DateTimeInterface $dateRetour): self
     {
-        $this->DateRetour = $DateRetour;
+        $this->dateRetour = $dateRetour;
 
         return $this;
     }
 
+    public function getImage1(): ?string
+    {
+        return $this->image1;
+    }
+
+    public function setImage1(string $image1): self
+    {
+        $this->image1 = $image1;
+
+        return $this;
+    }
+
+    public function getImage2(): ?string
+    {
+        return $this->image2;
+    }
+
+    public function setImage2(string $image2): self
+    {
+        $this->image2 = $image2;
+
+        return $this;
+    }
 }

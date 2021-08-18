@@ -81,20 +81,11 @@ class User implements  UserInterface
      */
     private $phone;
 
+
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $reset;
-
-    /**
-     * @ORM\OneToMany(targetEntity=Command::class, mappedBy="user")
-     */
-    private $commands;
-
-    public function __construct()
-    {
-        $this->commands = new ArrayCollection();
-    }
 
 
     public function getId(): ?int
@@ -228,6 +219,8 @@ class User implements  UserInterface
     }
 
     
+    
+
 
     public function getReset(): ?string
     {
@@ -237,36 +230,6 @@ class User implements  UserInterface
     public function setReset(?string $reset): self
     {
         $this->reset = $reset;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Command[]
-     */
-    public function getCommands(): Collection
-    {
-        return $this->commands;
-    }
-
-    public function addCommand(Command $command): self
-    {
-        if (!$this->commands->contains($command)) {
-            $this->commands[] = $command;
-            $command->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCommand(Command $command): self
-    {
-        if ($this->commands->removeElement($command)) {
-            // set the owning side to null (unless already changed)
-            if ($command->getUser() === $this) {
-                $command->setUser(null);
-            }
-        }
 
         return $this;
     }
