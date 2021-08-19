@@ -1,4 +1,4 @@
-{% extends 'panelAdmin.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block title %}{{parent()}}vol{% endblock %}
 
@@ -7,15 +7,15 @@
     <link rel="stylesheet" href="{{ asset('css/select2.css') }}">
 
     <div class="row justify-content-end">
-        <a class="btn btn-info col-md-2" href="{{ 'vol' }}">Retour</a>
+        <a class="btn btn-primary col-md-2 m-2" href="{{ 'vols' }}">Retour</a>
     </div>
 
 
 
 
-    
+
     <div class="col-md-6 mx-auto">
-        {{ form_start(volForm) }} 
+        {{ form_start(volForm) }}
 
 
         <div class="row">
@@ -35,16 +35,8 @@
 
         </div>
 
-        {#
-        form_row : tout
-        form_widget : input
-        form_error : message
-        form_label : label
 
-        #}
-
-
-        {{ form_row(volForm.numero, {
+        {{ form_row(volForm.numeroVol, {
             "attr" : {
                 "placeholder" : "saisir le numero"
             }
@@ -81,29 +73,22 @@
             }
         })
         }}
-        {{ form_row(volForm.Depart, {
+        {{ form_row(volForm.villeDepart, {
             "attr" : {
                 "placeholder" : "saisir la ville de depart"
             }
         })
         }}
-         {{ form_row(volForm.Arrivee, {
+        {{ form_row(volForm.villeArrivee, {
             "attr" : {
                 "placeholder" : "saisir la ville d'arivée"
             }
         })
         }}
-        {#
-        php :   ["key" => "value"]
-        twig:   {"key" : "value"}
-        #}
-        
-        
 
+        <input type="submit" value="Modifier" class="btn btn-dark text-white col-md-12 mt-3">
 
-        <input type="submit" value="Ajouter" class="btn btn-dark text-white col-md-12 mt-3">
-
-        {{ form_end(volForm) }} {# la fonction form_end permet de terminer le formulaire: </form> #}
+        {{ form_end(volForm) }}
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="{{ asset('js/select2.js') }}"></script>
