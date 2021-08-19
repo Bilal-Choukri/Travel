@@ -3,7 +3,8 @@
 namespace App\Form;
 
 
-use App\Entity\Ville;
+
+use App\Entity\Villes;
 use App\Entity\Vol;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -18,7 +19,7 @@ class VolType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('numero')
+            ->add('numeroVol')
             ->add('nomCompagny', TextType::class,[
             "label" =>"Nom de la Compagnie Aerienne",
             "required" =>"false",
@@ -41,15 +42,13 @@ class VolType extends AbstractType
             ])
 
 
-            ->add('Depart',EntityType::class, [
-                "class"=>Ville::class,
-                "choice_label"=>"nom",
-                'mapped' => false,
+            ->add('villeDepart',EntityType::class, [
+                "class"=>Villes::class,
+                "choice_label"=>"name",
             ])
-            ->add('Arrivee',EntityType::class, [
-                "class"=>Ville::class,
-                "choice_label"=>"nom",
-                'mapped' => false,
+            ->add('villeArrivee',EntityType::class, [
+                "class"=>Villes::class,
+                "choice_label"=>"name",
             ])
             
         ;

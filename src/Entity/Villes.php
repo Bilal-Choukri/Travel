@@ -35,11 +35,27 @@ class Villes
      */
     private $hotel;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Vol::class, mappedBy="villeDepart")
+     */
+    private $volsDepart;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Vol::class, mappedBy="villeArrivee")
+     */
+    private $volsArrivee;
+
+
+
 
     public function __construct()
     {
         $this->hotels = new ArrayCollection();
         $this->hotel = new ArrayCollection();
+        $this->departVols = new ArrayCollection();
+        $this->volsDepart = new ArrayCollection();
+        $this->volsArrivee = new ArrayCollection();
+
     }
 
     public function getId(): ?int
@@ -101,4 +117,64 @@ class Villes
         return $this;
     }
 
-}
+    /**
+     * @return Collection|Vol[]
+     */
+    public function getVolsDepart(): Collection
+    {
+        return $this->volsDepart;
+    }
+
+    public function addVolsDepart(Vol $volsDepart): self
+    {
+        if (!$this->volsDepart->contains($volsDepart)) {
+            $this->volsDepart[] = $volsDepart;
+            $volsDepart->setVilleDepart($this);
+        }
+
+        return $this;
+    }
+
+    public function removeVolsDepart(Vol $volsDepart): self
+    {
+        if ($this->volsDepart->removeElement($volsDepart)) {
+            // set the owning side to null (unless already changed)
+            if ($volsDepart->getVilleDepart() === $this) {
+                $volsDepart->setVilleDepart(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Vol[]
+     */
+    public function getVolsArrivee(): Collection
+    {
+        return $this->volsArrivee;
+    }
+
+    public function addVolsArrivee(Vol $volsArrivee): self
+    {
+        if (!$this->volsArrivee->contains($volsArrivee)) {
+            $this->volsArrivee[] = $volsArrivee;
+            $volsArrivee->setVilleArrivee($this);
+        }
+
+        return $this;
+    }
+
+    public function removeVolsArrivee(Vol $volsArrivee): self
+    {
+        if ($this->volsArrivee->removeElement($volsArrivee)) {
+            // set the owning side to null (unless already changed)
+            if ($volsArrivee->getVilleArrivee() === $this) {
+                $volsArrivee->setVilleArrivee(null);
+            }
+        }
+
+        return $this;
+    }
+
+    }

@@ -1,73 +1,62 @@
-{% extends 'panelAdmin.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block title %}tout Vols!{% endblock %}
 
 {% block body %}
 
-  
-    
-    <h3><a href="{{ path('vol') }}">Ajouter un vol</a></h3>
-  
+
+
+    <div class="row justify-content-end">
+        <a class="btn btn-primary col-md-2 m-2" href="{{ 'vol_ajouter' }}">Ajouter un vol</a>
+    </div>
+
     <table class="table table-dark text-center">
-  <thead>
-    <tr>
-     
-      <th>N° vol</th>
-      <th>Compagnie</th>
-      <th>H_dep</th>
-      <th>H_ret</th>
-      <th>j_dep</th>
-      <th>j_ret</th>
-      <th>v_dep</th>
-      <th >v_ret</th>
-      <th>prix</th>
-      <th>modifier</th>
-      <th>supprimer</th>
-      
+    <thead>
+        <tr>
+            <th>N° vol</th>
+            <th>Compagnie</th>
+            <th>HeureDepart</th>
+            <th>HeureRetour</th>
+            <th>JourDepart</th>
+            <th>JourRetour</th>
+            <th>VilleDepart</th>
+            <th>VilleRetour</th>
+            <th>prix</th>
+            <th>modifier</th>
+            <th>supprimer</th>
+        </tr>
+    </thead>
+    <tbody>
 
+        {% for vol in vols %}
 
-    </tr>
-  </thead>
-  <tbody>
-    {% for vol in vols %} 
-    <tr>
-      
-     
-      <td>{{vol.numero}}</td>
-      <td>{{ vol.nomCompagny}}</td>
-      <td>{{vol.heureDepart  | date("H:i")}}</td>
-      <td>{{vol.heureArrivee | date("H:i")}}</td>
-      <td>{{vol.dateDepart | date("d-m-Y")}}</td>
-      <td>{{vol.dateArrivee| date("d-m-Y")}}</td>
-      <td>{% for ville in vol.villeDepart %}
-            {{ville.nom}}
-             {% endfor %}
-        </td>
-       
-          <td>{% for ville in vol.villeDarivee %}
-                 {{ville.nom}}
-              {% endfor %}
+        <tr>
+            <td>{{vol.numeroVol}}</td>
+            <td>{{ vol.nomCompagny}}</td>
+            <td>{{vol.heureDepart  | date("H:i")}}</td>
+            <td>{{vol.heureArrivee | date("H:i")}}</td>
+            <td>{{vol.dateDepart | date("d-m-Y")}}</td>
+            <td>{{vol.dateArrivee| date("d-m-Y")}}</td>
+            <td>{{vol.villeDepart.name}}</td>
+            <td>{{vol.villeArrivee.name}}</td>
+            <td>{{vol.prix}}</td>
+            <td>
+                <a href="{{ path("vol_modifier", {"id":vol.id} ) }}">
+                    <img src="{{ asset('images/update.png') }}" alt="">
+                </a>
             </td>
 
-      <td>{{vol.prix}}</td>
-      <td>
-                            <a href="/vol">
-                                <img src="{{ asset('images/update.png') }}" alt=""> 
-                            </a>
-                        </td>
+            <td>
+                <a href="{{ path("delete_vol", {"id":vol.id} ) }}" onclick="return confirm('Confirmez-vous la suppression du produit?')">
+                    <img src="{{ asset('images/delete.png') }}" alt="">
+                </a>
+            </td>
+        </tr>
 
-                        <td>
-                            <a href="{{ path("delete_vol", {"id":vol.id} ) }}" onclick="return confirm('Confirmez-vous la suppression du produit?')">
-                                <img src="{{ asset('images/delete.png') }}" alt="">
-                            </a>
-                        </td>
-                    
-     
-    </tr>
-     {% endfor %}
-    
-  </tbody>
-</table>
+        {% endfor %}
+
+    </tbody>
+    </table>
 
 
    

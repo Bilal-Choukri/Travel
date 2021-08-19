@@ -2,6 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Pays;
+use App\Repository\PaysRepository;
+use App\Repository\VillesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -11,10 +14,17 @@ class NicoleController extends AbstractController
     /**
      * @Route("/nicole", name="nicole")
      */
-    public function index(): Response
+    public function index(PaysRepository $repoPays, VillesRepository $repoVilles): Response
     {
+        $paysArray = $repoPays->findAll();
+        //dd($paysArray);
+        $villesArray = $repoVilles->findAll();
+        //dd($reposVilles);
+
         return $this->render('nicole/index.html.twig', [
             'controller_name' => 'NicoleController',
+            "pays" => $paysArray,
+            "villes" => $villesArray,
         ]);
     }
 
@@ -30,9 +40,17 @@ class NicoleController extends AbstractController
     /**
      * @Route("/nicole/hotels", name="hotels")
      */
-    public function hotels(): Response
+    public function hotels(PaysRepository $repoPays, VillesRepository $repoVilles): Response
     {
+        $paysArray = $repoPays->findAll();
+        //dd($paysArray);
+        $villesArray = $repoVilles->findAll();
+        //dd($reposVilles);
+
         return $this->render('nicole/hotels.html.twig', [
+            'controller_name' => 'NicoleController',
+            "pays" => $paysArray,
+            "villes" => $villesArray,
         ]);
     }
 
