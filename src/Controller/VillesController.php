@@ -44,7 +44,7 @@ class VillesController extends AbstractController
             $manager->flush(); // envoie de l'objet $produit en BDD dans la table Produit
 
 
-            $this->addFlash('success', "La ville N° " . $ville->getId() . " a bien été ajouté");
+           // $this->addFlash('success', "La ville N° " . $ville->getId() . " a bien été ajouté");
 
             return $this->redirectToRoute("villes_afficher");
         }
