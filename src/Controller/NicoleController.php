@@ -28,12 +28,11 @@ class NicoleController extends AbstractController
     }
 
     /**
-     * @Route("/nicole/hotels", name="hotels")
+     * @Route("/hotels", name="hotels")
      */
     public function hotels(): Response
     {
-        return $this->render('nicole/hotels.html.twig', [
-        ]);
+        return $this->render('nicole/hotels.html.twig');
     }
 
 
