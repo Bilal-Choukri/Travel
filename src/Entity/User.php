@@ -82,12 +82,10 @@ class User implements  UserInterface
     private $phone;
 
 
-
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $reset;
-
 
 
     public function getId(): ?int
@@ -219,6 +217,9 @@ class User implements  UserInterface
     {
         // TODO: Implement @method string getUserIdentifier()
     }
+
+    
+    
 
 
     public function getReset(): ?string

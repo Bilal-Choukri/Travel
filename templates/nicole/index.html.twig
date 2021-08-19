@@ -33,30 +33,28 @@
                                     <div class="tab-pane fade show active" id="nav-vols" role="tabpanel" aria-labelledby="nav-vols-tab">
                                         <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">
                                             <label for="inputCity">Choisissez votre destination</label>
-                                            <input name="destination" type="text" class="form-control" id="inputCity" placeholder="Entrez votre destination...">
+                                                <select name="room" class="form-control tm-select" id="inputRoom">
+                                                    {% for ville in villes %}
+                                                        <option value="{{ ville.name }}" selected>{{ ville.name }}</option>
+                                                    {% endfor %}
+                                                </select>
                                         </div>
                                         <div class="form-group tm-form-group tm-form-group-1">
                                             <div class="form-group tm-form-group tm-form-group-pad tm-form-group-2">
                                                 <label for="inputRoom">Au départ de </label>
                                                 <select name="room" class="form-control tm-select" id="inputRoom">
-                                                    <option value="1" selected>france</option>
-                                                    <option value="2">Italie</option>
-                                                    <option value="3">Gréce</option>
-                                                    <option value="4">Angleterre</option>
-                                                    <option value="5">Portugal</option>
-                                                    <option value="6">Espagne</option>
-
+                                                    {% for unPays in pays %}
+                                                        <option value="{{ unPays.name }}" selected>{{ unPays.name }}</option>
+                                                    {% endfor %}
                                                 </select>
                                             </div>
                                             <div class="form-group tm-form-group tm-form-group-pad tm-form-group-2">
+
                                                 <label for="inputAdult">A destination</label>
                                                 <select name="adult" class="form-control tm-select" id="inputAdult">
-                                                    <option value="1" selected>france</option>
-                                                    <option value="2">Italie</option>
-                                                    <option value="3">Gréce</option>
-                                                    <option value="4">Angleterre</option>
-                                                    <option value="5">Portugal</option>
-                                                    <option value="6">Espagne</option>
+                                                    {% for unPays in pays %}
+                                                        <option value="{{ unPays.name }}" selected>{{ unPays.name }}</option>
+                                                    {% endfor %}
                                                 </select>
                                             </div>
 

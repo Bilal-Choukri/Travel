@@ -12,10 +12,14 @@
         <link rel="stylesheet" type="text/css" href="{{ asset("slick/slick-theme.css") }}"/>
        <link rel="stylesheet"  href="{{ asset("css/templatemo-style.css") }}"/>
 
+
+        <link rel="stylesheet" href="{{ asset("css/style.css") }}">
         {# la fonction twig asset() permet d'accéder au dossier "public" #}
         {% block stylesheets %}{% endblock %}
 
+        
     </head>
+
 
 
     <body>
@@ -37,6 +41,44 @@
                             <ul class="navbar-nav ml-auto">
                                 <li class="nav-item">
                                     <a class="nav-link active" href="#top">Home <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ path ('vols') }}">vols</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ path ('hotels') }}" >hotels</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ path ('locations') }}">locations</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ path ('formules') }}">formules</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ path ('contact') }}">contact</a>
+                                </li>
+                                <li class="nav-item">
+
+                                            {% if not app.user %}
+
+                                    {#  <a class="nav-link" href="{{ path('pageName') }}">Page</a>
+    <div class="tm-main-content" id="top">
+        <div class="tm-top-bar-bg"></div>
+        <div class="tm-top-bar" id="tm-top-bar">
+            <div class="container">
+                <div class="row">
+                    <nav class="navbar navbar-expand-lg narbar-light">
+                        <a class="navbar-brand mr-auto" href="#">
+                            <img src={{ asset("images/logo.png")}} alt="">
+                            Journey
+                        </a>
+                        <button type="button" id="nav-toggle" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div id="mainNav" class="collapse navbar-collapse tm-bg-white">
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#top">Home <span class="sr-only">(current)</span></a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ path ('vols') }}">vols</a>
@@ -82,6 +124,24 @@
             </div> <!-- container -->
         </div><!-- .tm-top-bar -->
 
+                                    #}
+                                    <a class="nav-link" href="{{ path('registration') }}">s'enregister</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ path('login') }}"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                                            </svg></span></a>
+                                </li>
+                                {% endif %}
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div><!--row -->
+            </div> <!-- container -->
+        </div><!-- .tm-top-bar -->
+    </div>
 
 
 
@@ -89,8 +149,15 @@
 
 
 
+
+
+
+
+
+
+    <div class="container">
     {% block body %}{% endblock %}
-
+    </div>
 
 
 
