@@ -2,9 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Pays;
-use App\Repository\PaysRepository;
-use App\Repository\VillesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -14,17 +11,10 @@ class NicoleController extends AbstractController
     /**
      * @Route("/nicole", name="nicole")
      */
-    public function index(PaysRepository $repoPays, VillesRepository $repoVilles): Response
+    public function index(): Response
     {
-        $paysArray = $repoPays->findAll();
-        //dd($paysArray);
-        $villesArray = $repoVilles->findAll();
-        //dd($reposVilles);
-
         return $this->render('nicole/index.html.twig', [
             'controller_name' => 'NicoleController',
-            "pays" => $paysArray,
-            "villes" => $villesArray,
         ]);
     }
 
@@ -40,17 +30,9 @@ class NicoleController extends AbstractController
     /**
      * @Route("/nicole/hotels", name="hotels")
      */
-    public function hotels(PaysRepository $repoPays, VillesRepository $repoVilles): Response
+    public function hotels(): Response
     {
-        $paysArray = $repoPays->findAll();
-        //dd($paysArray);
-        $villesArray = $repoVilles->findAll();
-        //dd($reposVilles);
-
         return $this->render('nicole/hotels.html.twig', [
-            'controller_name' => 'NicoleController',
-            "pays" => $paysArray,
-            "villes" => $villesArray,
         ]);
     }
 
@@ -88,9 +70,49 @@ class NicoleController extends AbstractController
     /**
      * @Route("/nicole/one-hotel", name="hotel")
      */
-    public function ohotel(): Response
+    public function onehotel(): Response
     {
         return $this->render('nicole/one-hotel.html.twig', [
+
+        ]);
+    }
+
+    /**
+     * @Route("/nicole/catalogue-voitures", name="voitures")
+     */
+    public function catv(): Response
+    {
+        return $this->render('nicole/catalogue-voitures.html.twig', [
+
+        ]);
+    }
+
+    /**
+     * @Route("/nicole/catalogue-hotels", name="reservation-hotels")
+     */
+    public function cathotels(): Response
+    {
+        return $this->render('nicole/catalogue-hotels.html.twig', [
+
+        ]);
+    }
+
+    /**
+     * @Route("/nicole/catalogue-vols", name="reservation-vols")
+     */
+    public function catvols(): Response
+    {
+        return $this->render('nicole/catalogue-vols.html.twig', [
+
+        ]);
+    }
+
+    /**
+     * @Route("/nicole/catalogue-formules", name="reservation-formules")
+     */
+    public function catformules(): Response
+    {
+        return $this->render('nicole/catalogue-formules.html.twig', [
 
         ]);
     }

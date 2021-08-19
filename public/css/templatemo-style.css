@@ -233,6 +233,7 @@ label { font-weight: 700; }
     -webkit-align-items: center;
     -ms-flex-align: center;
     align-items: center;
+    background-color: white;
 }
 
 .tm-slideshow-section-reverse {
@@ -377,6 +378,7 @@ label { font-weight: 700; }
     align-items: stretch;
     justify-content: space-around;
     margin-bottom: 25px;
+    background-color: white;
 }
 
 .tm-recommended-title {
