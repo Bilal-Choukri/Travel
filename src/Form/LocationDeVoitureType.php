@@ -64,3 +64,4 @@ class LocationDeVoituresType extends AbstractType
         ]);
     }
 }
+
