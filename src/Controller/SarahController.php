@@ -15,7 +15,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class SarahController extends AbstractController
 {
     /**
-     * @Route("/vol", name="vol")
+     * @Route("/vol_ajouter", name="vol_ajouter")
      */
     public function vol(Request $request, EntityManagerInterface $manager)
     {
@@ -37,12 +37,12 @@ class SarahController extends AbstractController
         endif;
 
 
-        return $this->render('sarah/vol.html.twig', [
+        return $this->render('sarah/vol_ajouter.html.twig', [
             'volForm' => $form->createView()
         ]);
     }
     /**
-     * @Route("/update_vol_{id<\d+>}", name="update_vol")
+     * @Route("/vol_modifier{id<\d+>}", name="vol_modifier")
      */
     public function modifVol($id, Request $request, EntityManagerInterface $manager){
 
@@ -55,9 +55,9 @@ class SarahController extends AbstractController
             
             $manager->persist($vol);
             $manager->flush();
-            return $this->redirectToRoute('vol');
+            return $this->redirectToRoute('vols');
         }
-        return $this->render('vol.html.twig',[
+        return $this->render('sarah/vol_modifier.html.twig',[
             'volForm' =>$form->createView()]);
     }
 
@@ -72,33 +72,7 @@ class SarahController extends AbstractController
         $manager->flush();
         return $this->redirectToRoute('vols');
     }
-/**
-     * @Route("/ville", name="ville")
-     */
-    public function ville(Request $request, EntityManagerInterface $manager)
-    {
 
-        $ville = new Ville();
-
-        $form = $this->createForm(VILLEType::class, $ville);
-
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()):
-
-            
-            $manager->persist($ville);
-            $manager->flush();
-            $this->addFlash('success', "la ville  a bien été ajouté");
-
-            return $this->redirectToRoute('ville');
-        endif;
-
-
-        return $this->render('sarah/ville.html.twig', [
-            'villeForm' => $form->createView()
-        ]);
-    }
      /**
      * @Route("/vols", name="vols")
      */

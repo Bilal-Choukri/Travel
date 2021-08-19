@@ -19,13 +19,10 @@ class Vol
      */
     private $id;
 
-
-   
-
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $numero;
+    private $numeroVol;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -58,36 +55,34 @@ class Vol
     private $prix;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Ville::class, inversedBy="vols")
+     * @ORM\ManyToOne(targetEntity=Villes::class, inversedBy="volsDepart")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $villeDepart;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Ville::class, inversedBy="vols")
+     * @ORM\ManyToOne(targetEntity=Villes::class, inversedBy="volsArrivee")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $villeDarivee;
+    private $villeArrivee;
 
-    public function __construct()
-    {
-        $this->villeDepart = new ArrayCollection();
-        $this->villeDarivee = new ArrayCollection();
-    }
 
-   
-    
+
+
     public function getId(): ?int
     {
         return $this->id;
 
     }
-    public function getNumero(): ?string
+
+    public function getNumeroVol(): ?string
     {
-        return $this->numero;
+        return $this->numeroVol;
     }
 
-    public function setNumero(string $numero): self
+    public function setNumeroVol(string $numeroVol): self
     {
-        $this->numero = $numero;
+        $this->numeroVol = $numeroVol;
 
         return $this;
     }
@@ -165,60 +160,29 @@ class Vol
         return $this;
     }
 
-    /**
-     * @return Collection|Ville[]
-     */
-    public function getVilleDepart(): Collection
+    public function getVilleDepart(): ?Villes
     {
         return $this->villeDepart;
     }
 
-    public function addVilleDepart(Ville $villeDepart): self
+    public function setVilleDepart(?Villes $villeDepart): self
     {
-        if (!$this->villeDepart->contains($villeDepart)) {
-            $this->villeDepart[] = $villeDepart;
-        }
+        $this->villeDepart = $villeDepart;
 
         return $this;
     }
 
-    public function removeVilleDepart(Ville $villeDepart): self
+    public function getVilleArrivee(): ?Villes
     {
-        $this->villeDepart->removeElement($villeDepart);
+        return $this->villeArrivee;
+    }
+
+    public function setVilleArrivee(?Villes $villeArrivee): self
+    {
+        $this->villeArrivee = $villeArrivee;
 
         return $this;
     }
 
-    /**
-     * @return Collection|Ville[]
-     */
-    public function getVilleDarivee(): Collection
-    {
-        return $this->villeDarivee;
-    }
 
-    public function addVilleDarivee(Ville $villeDarivee): self
-    {
-        if (!$this->villeDarivee->contains($villeDarivee)) {
-            $this->villeDarivee[] = $villeDarivee;
-        }
-
-        return $this;
-    }
-
-    public function removeVilleDarivee(Ville $villeDarivee): self
-    {
-        $this->villeDarivee->removeElement($villeDarivee);
-
-        return $this;
-    }
-
-   
-
-    
-
-    
-
-   
-   
 }
