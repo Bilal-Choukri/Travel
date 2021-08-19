@@ -2,9 +2,11 @@
 
 namespace App\Form;
 
+use App\Entity\Villes;
 use DateTime;
 
 use App\Entity\LocationDeVoitures;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -25,9 +27,15 @@ class LocationDeVoituresType extends AbstractType
                 ->add('prix', MoneyType::class, [
                     "currency" => "EUR"
                 ])
+                ->add('villeDepart',EntityType::class, [
+                    "class"=>Villes::class,
+                    "choice_label"=>"name",
+                ])
+                ->add('villeArrivee',EntityType::class, [
+                    "class"=>Villes::class,
+                    "choice_label"=>"name",
+                ])
                 ->add('modele', TextType::class)
-                ->add('prixencharge', TextType::class)
-                ->add('restitution', TextType::class)
                 ->add('date', DateType::class)
                 ->add('dateRetour', DateType::class)
                 ->add('image', FileType::class)
@@ -41,9 +49,15 @@ class LocationDeVoituresType extends AbstractType
                 ->add('prix', MoneyType::class, [
                     "currency" => "EUR"
                 ])
+                ->add('villeDepart',EntityType::class, [
+                    "class"=>Villes::class,
+                    "choice_label"=>"name",
+                ])
+                ->add('villeArrivee',EntityType::class, [
+                    "class"=>Villes::class,
+                    "choice_label"=>"name",
+                ])
                 ->add('modele', TextType::class)
-                ->add('prixencharge', TextType::class)
-                ->add('restitution', TextType::class)
                 ->add('date', DateType::class)
                 ->add('dateRetour', DateType::class)
                 ->add('imageModif', FileType::class, [

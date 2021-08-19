@@ -11,7 +11,7 @@
 
 
 <div class="row justify-content-end">
-    <a class="btn btn-success col-md-2" href="{{ path('voiture_ajouter') }}">Ajouter une voiture</a>
+    <a class="btn btn-primary col-md-2 m-2" href="{{ path('voiture_ajouter') }}">Ajouter une voiture</a>
 </div>
 
 {% if voitures is not empty %}
@@ -24,7 +24,9 @@
                 <th>Prix/jour (€)</th>
                 <th>Photo</th>
                 <th>Prise en charge</th>
+                <th>Pays</th>
                 <th>Restitution</th>
+                <th>Pays</th>
                 <th>Date depart</th>
                 <th>Date Retour</th>
                 <th>Modifier</th>
@@ -44,8 +46,10 @@
                     <td>
                         <img src="{{ asset('images/imagesUpload/' ~ voiture.image ) }}" style="width:80px" alt="">
                     </td>
-                    <td>{{ voiture.prixencharge }}</td>
-                    <td>{{ voiture.restitution }}</td>
+                    <td>{{ voiture.villeDepart.name }}</td>
+                    <td>{{ voiture.villeDepart.pays.name }}</td>
+                    <td>{{ voiture.villeArrivee.name }}</td>
+                    <td>{{ voiture.villeArrivee.pays.name }}</td>
                     <td>{{ voiture.date|date("d/m/Y") }}</td>
                     <td>{{ voiture.dateRetour|date("d/m/Y") }}</td>
                     <td>
