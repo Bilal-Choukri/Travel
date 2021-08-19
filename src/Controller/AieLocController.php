@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\LocationDeVoitures;
-use App\Form\LocationdevoituresType;
+use App\Form\LocationDeVoituresType;
 use App\Repository\LocationDeVoituresRepository;
 use App\Service\Panier\PanierService;
 use Doctrine\ORM\EntityManagerInterface;
@@ -35,7 +35,7 @@ class AieLocController extends AbstractController
     {
         $voiture = new LocationDeVoitures;
 
-        $form = $this->createForm(LocationdevoituresType::class, $voiture, array('ajouter' => true));
+        $form = $this->createForm(LocationDeVoituresType::class, $voiture, array('ajouter' => true));
 
         $form->handleRequest($request);
 
