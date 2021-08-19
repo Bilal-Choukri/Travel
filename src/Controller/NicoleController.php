@@ -19,7 +19,7 @@ class NicoleController extends AbstractController
     }
 
     /**
-     * @Route("/nicole/vols", name="vols")
+     * @Route("/nicole/vols", name="voles")
      */
     public function vols(): Response
     {
@@ -28,7 +28,7 @@ class NicoleController extends AbstractController
     }
 
     /**
-     * @Route("/hotels", name="hotels")
+     * @Route("/hotels", name="hoteles")
      */
     public function hotels(): Response
     {
