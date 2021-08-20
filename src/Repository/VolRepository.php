@@ -22,19 +22,52 @@ class VolRepository extends ServiceEntityRepository
     // /**
     //  * @return Vol[] Returns an array of Vol objects
     //  */
-    /*
-    public function findByExampleField($value)
+
+    public function findByVilleDate($date, $depart, $arrivee)
     {
         return $this->createQueryBuilder('v')
-            ->andWhere('v.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('v.id', 'ASC')
-            ->setMaxResults(10)
+            ->andWhere('v.villeDepart = :depart')
+            ->setParameter('depart', $depart)
+            ->andWhere('v.villeArrivee = :arrivee')
+            ->setParameter('arrivee', $arrivee)
+            ->andWhere('v.dateDepart = :date')
+            ->setParameter('date', $date)
             ->getQuery()
             ->getResult()
-        ;
+            ;
     }
-    */
+
+    public function findByVilleDatepluscinq($date, $depart, $arrivee, $datepluscinq)
+    {
+        return $this->createQueryBuilder('v')
+            ->andWhere('v.villeDepart = :depart')
+            ->setParameter('depart', $depart)
+            ->andWhere('v.villeArrivee = :arrivee')
+            ->setParameter('arrivee', $arrivee)
+            ->andWhere('v.dateDepart >= :date')
+            ->setParameter('date', $date)
+            ->andWhere('v.dateDepart <= :datepluscinq')
+            ->setParameter('datepluscinq', $datepluscinq)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    public function findByVilleDatemoinscinq($date, $depart, $arrivee, $datemoinscinq)
+    {
+        return $this->createQueryBuilder('v')
+            ->andWhere('v.villeDepart = :depart')
+            ->setParameter('depart', $depart)
+            ->andWhere('v.villeArrivee = :arrivee')
+            ->setParameter('arrivee', $arrivee)
+            ->andWhere('v.dateDepart >= :date')
+            ->setParameter('date', $date)
+            ->andWhere('v.dateDepart <= :datemoinscinq')
+            ->setParameter('datemoinscinq', $datemoinscinq)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 
     /*
     public function findOneBySomeField($value): ?Vol

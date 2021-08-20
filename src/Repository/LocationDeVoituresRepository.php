@@ -22,19 +22,52 @@ class LocationDeVoituresRepository extends ServiceEntityRepository
     // /**
     //  * @return LocationDeVoitures[] Returns an array of LocationDeVoitures objects
     //  */
-    /*
-    public function findByExampleField($value)
+
+    public function findByVilleDate($prixencharge, $restitution, $date)
     {
-        return $this->createQueryBuilder('l')
-            ->andWhere('l.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('l.id', 'ASC')
-            ->setMaxResults(10)
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.prixencharge = :date')
+            ->setParameter('date', $prixencharge)
+            ->andWhere('p.restitution = :restitution')
+            ->setParameter('restitution', $restitution)
+            ->andWhere('p.date = :date')
+            ->setParameter('date', $date)
             ->getQuery()
             ->getResult()
-        ;
+            ;
     }
-    */
+
+    public function findByVilleDatepluscinq($date, $prixencharge, $restitution, $datepluscinq)
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.prixencharge = :date')
+            ->setParameter('date', $prixencharge)
+            ->andWhere('p.restitution = :restitution')
+            ->setParameter('restitution', $restitution)
+            ->andWhere('p.date = :date')
+            ->setParameter('date', $date)
+            ->andWhere('p.date <= :datepluscinq')
+            ->setParameter('datepluscinq', $datepluscinq)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    public function findByVilleDatemoinscinq($date, $prixencharge, $restitution, $datepluscinq)
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.prixencharge = :date')
+            ->setParameter('date', $prixencharge)
+            ->andWhere('p.restitution = :restitution')
+            ->setParameter('restitution', $restitution)
+            ->andWhere('p.date = :date')
+            ->setParameter('date', $date)
+            ->andWhere('p.date <= :datepluscinq')
+            ->setParameter('datepluscinq', $datepluscinq)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 
     /*
     public function findOneBySomeField($value): ?LocationDeVoitures

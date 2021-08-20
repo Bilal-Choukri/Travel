@@ -45,6 +45,16 @@ class Villes
      */
     private $volsArrivee;
 
+    /**
+     * @ORM\OneToMany(targetEntity=LocationDeVoitures::class, mappedBy="villeDepart")
+     */
+    private $locationDeVoitures;
+
+    /**
+     * @ORM\OneToMany(targetEntity=LocationDeVoitures::class, mappedBy="villeArrivee")
+     */
+    private $locationDeVoituresD;
+
 
 
 
@@ -55,6 +65,8 @@ class Villes
         $this->departVols = new ArrayCollection();
         $this->volsDepart = new ArrayCollection();
         $this->volsArrivee = new ArrayCollection();
+        $this->locationDeVoitures = new ArrayCollection();
+        $this->locationDeVoituresD = new ArrayCollection();
 
     }
 
@@ -171,6 +183,66 @@ class Villes
             // set the owning side to null (unless already changed)
             if ($volsArrivee->getVilleArrivee() === $this) {
                 $volsArrivee->setVilleArrivee(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|LocationDeVoitures[]
+     */
+    public function getLocationDeVoitures(): Collection
+    {
+        return $this->locationDeVoitures;
+    }
+
+    public function addLocationDeVoiture(LocationDeVoitures $locationDeVoiture): self
+    {
+        if (!$this->locationDeVoitures->contains($locationDeVoiture)) {
+            $this->locationDeVoitures[] = $locationDeVoiture;
+            $locationDeVoiture->setVilleDepart($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLocationDeVoiture(LocationDeVoitures $locationDeVoiture): self
+    {
+        if ($this->locationDeVoitures->removeElement($locationDeVoiture)) {
+            // set the owning side to null (unless already changed)
+            if ($locationDeVoiture->getVilleDepart() === $this) {
+                $locationDeVoiture->setVilleDepart(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|LocationDeVoitures[]
+     */
+    public function getLocationDeVoituresD(): Collection
+    {
+        return $this->locationDeVoituresD;
+    }
+
+    public function addLocationDeVoituresD(LocationDeVoitures $locationDeVoituresD): self
+    {
+        if (!$this->locationDeVoituresD->contains($locationDeVoituresD)) {
+            $this->locationDeVoituresD[] = $locationDeVoituresD;
+            $locationDeVoituresD->setVilleArrivee($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLocationDeVoituresD(LocationDeVoitures $locationDeVoituresD): self
+    {
+        if ($this->locationDeVoituresD->removeElement($locationDeVoituresD)) {
+            // set the owning side to null (unless already changed)
+            if ($locationDeVoituresD->getVilleArrivee() === $this) {
+                $locationDeVoituresD->setVilleArrivee(null);
             }
         }
 

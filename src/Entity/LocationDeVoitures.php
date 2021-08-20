@@ -27,15 +27,6 @@ class LocationDeVoitures
      */
     private $modele;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $prixencharge;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $restitution;
 
     /**
      * @ORM\Column(type="date")
@@ -68,6 +59,18 @@ class LocationDeVoitures
 
     public $imageModif2;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Villes::class, inversedBy="locationDeVoitures")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $villeDepart;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Villes::class, inversedBy="locationDeVoituresD")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $villeArrivee;
+
 
 
     public function getId(): ?int
@@ -95,30 +98,6 @@ class LocationDeVoitures
     public function setModele(string $modele): self
     {
         $this->modele = $modele;
-
-        return $this;
-    }
-
-    public function getPrixencharge(): ?string
-    {
-        return $this->prixencharge;
-    }
-
-    public function setPrixencharge(string $prixencharge): self
-    {
-        $this->prixencharge = $prixencharge;
-
-        return $this;
-    }
-
-    public function getRestitution(): ?string
-    {
-        return $this->restitution;
-    }
-
-    public function setRestitution(string $restitution): self
-    {
-        $this->restitution = $restitution;
 
         return $this;
     }
@@ -180,6 +159,30 @@ class LocationDeVoitures
     public function setImage2(string $image2): self
     {
         $this->image2 = $image2;
+
+        return $this;
+    }
+
+    public function getVilleDepart(): ?Villes
+    {
+        return $this->villeDepart;
+    }
+
+    public function setVilleDepart(?Villes $villeDepart): self
+    {
+        $this->villeDepart = $villeDepart;
+
+        return $this;
+    }
+
+    public function getVilleArrivee(): ?Villes
+    {
+        return $this->villeArrivee;
+    }
+
+    public function setVilleArrivee(?Villes $villeArrivee): self
+    {
+        $this->villeArrivee = $villeArrivee;
 
         return $this;
     }
